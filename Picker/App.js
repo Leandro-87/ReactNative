@@ -3,7 +3,9 @@
 
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
+
 import {Picker} from '@react-native-picker/picker'
+import Slider from '@react-native-community/slider';
 
 export default class App extends Component{
 
@@ -16,7 +18,9 @@ export default class App extends Component{
         {key: 2, nome: 'Supremo Bacon', valor:47.5},
         {key: 3, nome: 'Salad', valor:39.5},
         {key: 4, nome: 'Triplo Smash', valor:31.9}
-      ]
+      ],
+      condimento: 1
+      
     }
   }
 
@@ -42,6 +46,22 @@ export default class App extends Component{
           <Text style={styles.burger}> {this.state.burgers[this.state.burger].nome} </Text>
           <Text style={styles.burger}> R${this.state.burgers[this.state.burger].valor.toFixed(2)} </Text>
         </View>
+
+        <View>
+          <Text style={styles.condimento}>Cebola:</Text>
+          <Slider
+            minimumValue={0}
+            maximumValue={10}
+            onValueChange={(valorCondimento) => this.setState({condimento: valorCondimento})}
+            value={this.state.condimento}
+            minimumTrackTintColor='#880000'
+            maximumTrackTintColor='#d1d1d1'
+          />
+          <Text style={styles.valorCondimento}>
+            {this.state.condimento.toFixed(0)}
+          </Text>
+        </View>
+
       </View>
     )
   }
@@ -51,5 +71,7 @@ const styles = StyleSheet.create({
   container:{flex:1},
   logo:{textAlign:'center', fontSize:20, paddingVertical:15, backgroundColor:'#880000', color:'#FFF'},
   burger:{marginVertical:15, fontSize:25, textAlign:'center'},
-  pedido:{borderWidth:1, borderColor:'#D1D1D1', borderRadius:4, margin:20, padding:20}
+  pedido:{borderWidth:1, borderColor:'#D1D1D1', borderRadius:4, margin:20, padding:20},
+  condimento:{paddingHorizontal:15, textAlign:'center'},
+  valorCondimento:{paddingHorizontal:15, textAlign:'center', fontSize:25}
 })
