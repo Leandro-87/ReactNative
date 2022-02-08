@@ -2,9 +2,9 @@
 // npm install @react-native-picker/picker
 
 import React, {Component} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Switch} from 'react-native';
 
-import {Picker} from '@react-native-picker/picker'
+import {Picker} from '@react-native-picker/picker';
 import Slider from '@react-native-community/slider';
 
 export default class App extends Component{
@@ -19,7 +19,8 @@ export default class App extends Component{
         {key: 3, nome: 'Salad', valor:39.5},
         {key: 4, nome: 'Triplo Smash', valor:31.9}
       ],
-      condimento: 1
+      condimento: 1,
+      picles: false
       
     }
   }
@@ -60,6 +61,19 @@ export default class App extends Component{
           <Text style={styles.valorCondimento}>
             {this.state.condimento.toFixed(0)}
           </Text>
+
+          <View style={{display:'flex', flexDirection:'row',justifyContent:'space-between', padding:20}}>
+            <Text style={styles.font1} >Aceita picles?</Text>
+            <Switch 
+              value={this.state.picles}
+              onValueChange={(valor) => this.setState({picles: valor})}
+              thumbColor='#880000'
+            />
+          </View>
+          <Text style={{textAlign:'right', paddingHorizontal:20, fontWeight:'bold'}}>
+            {(this.state.picles) ? 'Picles é bom pra diaxo' : 'Só chatos não gostam de picles'}
+          </Text>
+
         </View>
 
       </View>
@@ -73,5 +87,6 @@ const styles = StyleSheet.create({
   burger:{marginVertical:15, fontSize:25, textAlign:'center'},
   pedido:{borderWidth:1, borderColor:'#D1D1D1', borderRadius:4, margin:20, padding:20},
   condimento:{paddingHorizontal:15, textAlign:'center'},
-  valorCondimento:{paddingHorizontal:15, textAlign:'center', fontSize:25}
+  valorCondimento:{paddingHorizontal:15, textAlign:'center', fontSize:25},
+  font1:{fontSize:20}
 })
