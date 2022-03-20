@@ -1,0 +1,12 @@
+npm install styled-components
+npm install firebase@^8.8.1
+npm install @react-native-async-storage/async-storage
+npm install @react-navigation/native@^5.x
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+npm install @react-navigation/stack@^5.x
+npm install @react-navigation/drawer@^5.x
+
+npm install react-native-vector-icons
+npx react-native link react-native-vector-icons
+=> npm install react-native-picker-select <= NÃO ROLA USAR
+npm install @react-native-picker/picker
