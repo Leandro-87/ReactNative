@@ -1,9 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Text, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import {useNavigation} from '@react-navigation/native'
-import {format} from 'date-fns'
-import {AuthContext} from '../../contexts/auth'
-import FinalizarCadastroBarbearia from './FinalizarCadastroBarbearia';
 
 import { Background, Logo, AreaInput, Input, BtnText, Btn } from '../../assets/styles';
 import firebase from '../../services/firebaseConnection'
@@ -11,66 +8,67 @@ import firebase from '../../services/firebaseConnection'
 export default function CadastrarMinhaBarbearia() {
   const navigation = useNavigation()
 
-  const [nomeBarbeiro, setNomeBarbeiro] = useState('');
   const [nomeBarbearia, setNomeBarbearia] = useState('');
-  const [cidadeBarbearia, setcidadeBarbearia] = useState('');
-  const {user} = useContext(AuthContext)
+  const [cidadeBarbearia, setCidadeBarbearia] = useState('');
+  const [email, setEmail] = useState('');
+  const [user, setUser] = useState(null);
+
 
   function cadastrarBarbearia(){
     Keyboard.dismiss();
-    if(nomeBarbeiro || nomeBarbearia || cidadeBarbearia === null){
+   /* if(nomeBarbeiro || nomeBarbearia || cidadeBarbearia || numeroBarbeiros === null){
       alert('Preencha todos os campos.');
       return;
-    } 
+    }*/
 
     Alert.alert(
       'Confirmar cadastro',
-      `${nomeBarbeiro} cadastrou ${nomeBarbearia}`,
+      `${nomeBarbearia} de ${cidadeBarbearia}. Siga os próximos passos para o cadastro`,
       [
         {
           text: 'Cancelar',
           style: 'cancel'
         },
         {
-          text: 'Confirmar',
+          text: 'Bóra la',
           onPress: () => confirmaBarbearia()
         }
       ]
     )
-        
+    
   }
 
   // Cadastro de barbearia parceira
-  async function confirmaBarbearia(){
-    /*let uid = user.uid;
-    let key = await database().ref('barbearia').child(uid).push().key;
-    await firebase.database().ref('barbearia').child(uid).child(key).set({
-      nomeBarbearia: nomeBarbearia,
-      nomeBarbeiro: nomeBarbeiro,
-      numeroBarbeiros: numeroBarbeiros,
-      cidadeBarbearia: cidadeBarbearia,
-      date: format(new Date(), 'dd/MM/yy')
-    });*/
-    Keyboard.dismiss();
-    setNomeBarbearia('');
-    navigation.navigate('FinalizarCadastroBarbearia')
-  }
+  async function confirmaBarbearia(nomeBarbearia, cidadeBarbearia, email){
+        await firebase.auth().createUserWithEmailAndPassword(nomeBarbearia, cidadeBarbearia, email)
+        .then(async (value)=>{
+            let uid = value.user.uid;
+            await firebase.database().ref('barbearia').child(uid).set({
+                nome: nome
+            })
+            .then(() => {
+                let data = {
+                    uid: uid,
+                    nomeBarbearia: nomeBarbearia,
+                    cidadeBarbearia: cidadeBarbearia,
+                    email: email
+                };
+                setNomeBarbearia(data);
+                setCidadeBarbearia(data)
+                setEmail(data);
+            })
+        })
+        .catch((error) => {
+            alert(error.code)
+        })
+    }
 
  return (
    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
      <Background>
             <Logo source={require('../../assets/img/Logo.png')}/>
             <Text>Cadastro de barberia</Text>
-            <AreaInput>
-                <Input 
-                placeholder="Meu nome"
-                autoCorrect={false}
-                autoCapitalize="none"
-                returnKeyType="next"
-                value={nomeBarbeiro}
-                onChangeText={ (text) => setNomeBarbeiro(text)}
-               />
-            </AreaInput>
+           
             <AreaInput>
                 <Input 
                 placeholder="Nome da Barbearia"
@@ -88,10 +86,19 @@ export default function CadastrarMinhaBarbearia() {
                 autoCapitalize="none"
                 returnKeyType="next"
                 value={cidadeBarbearia}
-                onChangeText= {(text) => setcidadeBarbearia(text)}
+                onChangeText= {(text) => setCidadeBarbearia(text)}
                />
             </AreaInput>
-
+            <AreaInput>
+                <Input 
+                placeholder="Cidade"
+                autoCorrect={false}
+                autoCapitalize="none"
+                returnKeyType="next"
+                value={email}
+                onChangeText= {(text) => setEmail(text)}
+               />
+            </AreaInput>
 
           <Btn onPress={cadastrarBarbearia}>
             <BtnText>Cadastrar minha barbearia</BtnText>

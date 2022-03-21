@@ -6,3 +6,6 @@ export const Header = styled.View`
 
 export const ButtonMenu = styled.TouchableWithoutFeedback`
     justify-content:center; align-items:center;`;
+
+export const LogoBarbeariaFrequento = styled.Image`
+   `;

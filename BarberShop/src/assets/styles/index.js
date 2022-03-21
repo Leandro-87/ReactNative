@@ -2,7 +2,7 @@
 import styled from 'styled-components/native'
 
 export const Background = styled.View`
-flex: 1; margin: 20px; `;
+flex: 1; margin: 0 20px; `;
 
 export const Container = styled.KeyboardAvoidingView`
 flex:1;`;
@@ -17,7 +17,7 @@ export const Input = styled.TextInput`
 font-size:20px; margin-bottom:20px;`;
 
 export const Btn = styled.TouchableOpacity`
-padding:12px 30px; background-color:#007799; align-items:center; align-self:center; border-radius:2px;`;
+padding:12px 30px; margin-bottom:20px; background-color:#4087C8; align-items:center; align-self:center; border-radius:500px;`;
 
 export const BtnText = styled.Text`
 color:#FFF;`;
@@ -29,4 +29,4 @@ export const LinkText = styled.Text`
 `;
 
 export const BarbsFrequento = styled.FlatList`
-margin-top:50px`;
+ padding:0 20px; margin:20px 0; align-self:center;`;

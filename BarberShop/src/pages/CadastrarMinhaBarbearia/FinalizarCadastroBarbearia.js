@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { Text, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 import {useNavigation} from '@react-navigation/native'
+import Picker from '../../components/Picker';
 import {format} from 'date-fns'
 import {AuthContext} from '../../contexts/auth'
 import FinalizarCadastroBarbearia from './FinalizarCadastroBarbearia';
 
-import { Background, Logo, AreaInput, Input, BtnText, Btn } from '../../assets/styles';
+import { Background, AreaInput, Input, BtnText, Btn } from '../../assets/styles';
 import firebase from '../../services/firebaseConnection'
 
 export default function CadastrarMinhaBarbearia() {
@@ -14,25 +15,23 @@ export default function CadastrarMinhaBarbearia() {
   const [nomeBarbeiro, setNomeBarbeiro] = useState('');
   const [nomeBarbearia, setNomeBarbearia] = useState('');
   const [cidadeBarbearia, setcidadeBarbearia] = useState('');
+  const [numeroBarbeiros, setNumeroBarbeiros] = useState(null);
   const {user} = useContext(AuthContext)
 
   function cadastrarBarbearia(){
     Keyboard.dismiss();
-    if(nomeBarbeiro || nomeBarbearia || cidadeBarbearia === null){
-      alert('Preencha todos os campos.');
-      return;
-    } 
+   
 
     Alert.alert(
       'Confirmar cadastro',
-      `${nomeBarbeiro} cadastrou ${nomeBarbearia}`,
+      `Pronto para expor sua agenda para muitas pessoas`,
       [
         {
           text: 'Cancelar',
           style: 'cancel'
         },
         {
-          text: 'Confirmar',
+          text: 'Vamos lá',
           onPress: () => confirmaBarbearia()
         }
       ]
@@ -53,17 +52,15 @@ export default function CadastrarMinhaBarbearia() {
     });*/
     Keyboard.dismiss();
     setNomeBarbearia('');
-    navigation.navigate('FinalizarCadastroBarbearia')
+    navigation.navigate('Home')
   }
 
  return (
    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
      <Background>
-            <Logo source={require('../../assets/img/Logo.png')}/>
-            <Text>Cadastro de barberia</Text>
             <AreaInput>
                 <Input 
-                placeholder="Meu nome"
+                placeholder="Rua"
                 autoCorrect={false}
                 autoCapitalize="none"
                 returnKeyType="next"
@@ -73,7 +70,7 @@ export default function CadastrarMinhaBarbearia() {
             </AreaInput>
             <AreaInput>
                 <Input 
-                placeholder="Nome da Barbearia"
+                placeholder="Número"
                 autoCorrect={false}
                 autoCapitalize="none"
                 returnKeyType="next"
@@ -83,7 +80,7 @@ export default function CadastrarMinhaBarbearia() {
             </AreaInput>
             <AreaInput>
                 <Input 
-                placeholder="Cidade"
+                placeholder="Bairro"
                 autoCorrect={false}
                 autoCapitalize="none"
                 returnKeyType="next"
@@ -92,9 +89,10 @@ export default function CadastrarMinhaBarbearia() {
                />
             </AreaInput>
 
+            <Picker onChange={setNumeroBarbeiros} numeroBarbeiros={numeroBarbeiros}/>
 
           <Btn onPress={cadastrarBarbearia}>
-            <BtnText>Cadastrar minha barbearia</BtnText>
+            <BtnText>Abrir agenda online</BtnText>
           </Btn>
 
    </Background>

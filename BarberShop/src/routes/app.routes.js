@@ -5,7 +5,6 @@ import Home from '../pages/Home'
 import BuscarPeloMapa from '../pages/BuscarPeloMapa';
 import Perfil from '../pages/Perfil';
 
-
 const AppDrawer = createDrawerNavigator();
 
 function AppRoutes(){
@@ -28,7 +27,7 @@ function AppRoutes(){
         }}
         >
             <AppDrawer.Screen name="Home" component={Home} />
-            <AppDrawer.Screen name="Buscar Pelo Mapa" component={BuscarPeloMapa} />
+            <AppDrawer.Screen name="BuscarPeloMapa" component={BuscarPeloMapa} />
             <AppDrawer.Screen name="Perfil" component={Perfil} />
         </AppDrawer.Navigator>
     );
