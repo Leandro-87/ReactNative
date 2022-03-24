@@ -5,7 +5,6 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import CadastrarMinhaBarbearia from '../pages/CadastrarMinhaBarbearia';
 import FinalizarCadastroBarbearia from '../pages/CadastrarMinhaBarbearia/FinalizarCadastroBarbearia';
-import HomeBarbearia from '../pages/HomeBarbearia';
 
 const AuthStack = createStackNavigator();
 
@@ -16,7 +15,6 @@ function AuthRoutes(){
             <AuthStack.Screen name="SignUp" component={SignUp} options={{headerTitle: 'Criar minha conta'}} />
             <AuthStack.Screen name="CadastrarMinhaBarbearia" component={CadastrarMinhaBarbearia} options={{headerTitle: 'Sou barbeiro'}} />
             <AuthStack.Screen name="FinalizarCadastroBarbearia" component={FinalizarCadastroBarbearia} options={{headerTitle: 'Finalizar cadastro'}} />
-            <AuthStack.Screen name="HomeBarbearia" component={HomeBarbearia} />
         </AuthStack.Navigator>
     );
 }

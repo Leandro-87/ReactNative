@@ -19,7 +19,6 @@ export default function SignUp() {
     
   return (
     <TouchableNativeFeedback onPress={() => Keyboard.dismiss()}>
-      <Background>
           <Container
           behavior={Platform.OS === 'ios' ? 'padding' : ''}>
 
@@ -61,7 +60,6 @@ export default function SignUp() {
             </Btn>
 
           </Container>
-      </Background>
     </TouchableNativeFeedback>
   );
 }

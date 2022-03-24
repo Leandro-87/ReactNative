@@ -6,7 +6,7 @@ import {format} from 'date-fns'
 import {AuthContext} from '../../contexts/auth'
 import FinalizarCadastroBarbearia from './FinalizarCadastroBarbearia';
 
-import { Background, AreaInput, Input, BtnText, Btn } from '../../assets/styles';
+import { Container, AreaInput, Input, BtnText, Btn } from '../../assets/styles';
 import firebase from '../../services/firebaseConnection'
 
 export default function CadastrarMinhaBarbearia() {
@@ -52,12 +52,12 @@ export default function CadastrarMinhaBarbearia() {
     });*/
     Keyboard.dismiss();
     setNomeBarbearia('');
-    navigation.navigate('Home')
+    navigation.navigate('BemvindoBarbearia')
   }
 
  return (
    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-     <Background>
+     <Container>
             <AreaInput>
                 <Input 
                 placeholder="Rua"
@@ -95,7 +95,7 @@ export default function CadastrarMinhaBarbearia() {
             <BtnText>Abrir agenda online</BtnText>
           </Btn>
 
-   </Background>
+    </Container>
    </TouchableWithoutFeedback>
   );
 }

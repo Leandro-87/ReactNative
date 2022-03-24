@@ -4,7 +4,7 @@ import { Btn, BtnText, Container, BarbsFrequento, Background, AreaInput, Input }
 import Header from '../../components/Header';
 import BarbeariasFrequento from '../../components/BarbeariasFrequento';
 import {useNavigation} from '@react-navigation/native';
-import HomeBarbearia from '../HomeBarbearia';
+import Stack from '../../routes/Stack'
 
 import { AuthContext } from '../../contexts/auth';
 
@@ -23,12 +23,11 @@ export default function Home() {
   return (
     <Container>
       <Header />
-      <Background>
         <Text>Procurar barbearia</Text>
         {/*<Text>{user && user.nome}</Text>
         <Text>{user && user.email}</Text>*/}
         <AreaInput>
-          <Input 
+          <Input  
            placeholder="Ex: Corleone"
            autoCorrect={false}
            autoCapitalize="none"           
@@ -57,7 +56,6 @@ export default function Home() {
             Sair
           </BtnText>
         </Btn>
-        </Background>
     </Container>
   );
 }

@@ -1,11 +1,14 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { Background } from '../../assets/styles';
+import Header from '../../components/Header';
+import {Container} from '../../assets/styles'
 
 export default function HomeBarbearia() {
  return (
-   <Background>
-       <Text>Home barbearia</Text>
-   </Background>
+
+   <Container>
+     <Header />
+       <Text>Home Barbearia</Text>
+    </Container>
   );
 }

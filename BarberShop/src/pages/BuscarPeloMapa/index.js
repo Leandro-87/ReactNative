@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 import Header from '../../components/Header';
+import {Container} from '../../assets/styles'
 
 export default function BuscarPeloMapa() {
  return (
 
-   <View>
+   <Container>
      <Header />
        <Text>Busca pelo mapa</Text>
-    </View>
+    </Container>
   );
 }

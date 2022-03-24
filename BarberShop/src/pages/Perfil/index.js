@@ -14,13 +14,12 @@ export default function Perfil() {
 
   return (
       <>
-      <Header />
         <Container>
+            <Header />
 
             <Text>Perfil</Text>
             <Text>{user && user.nome}</Text>
             <Text>{user && user.email}</Text>
-        </Container>
         <View>
             <Btn onPress={ () => signOut()}>
                 <BtnText>
@@ -33,6 +32,7 @@ export default function Perfil() {
                 </BtnText>
             </Btn>
         </View>
+        </Container>
     </>
   );
 }

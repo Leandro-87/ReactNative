@@ -5,7 +5,7 @@ import {format} from 'date-fns'
 import {AuthContext} from '../../contexts/auth'
 import FinalizarCadastroBarbearia from './FinalizarCadastroBarbearia';
 
-import { Background, Logo, AreaInput, Input, BtnText, Btn } from '../../assets/styles';
+import { Container, Logo, AreaInput, Input, BtnText, Btn } from '../../assets/styles';
 import firebase from '../../services/firebaseConnection'
 
 export default function CadastrarMinhaBarbearia() {
@@ -58,7 +58,7 @@ export default function CadastrarMinhaBarbearia() {
 
  return (
    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-     <Background>
+     <Container>
             <Logo source={require('../../assets/img/Logo.png')}/>
             <Text>Cadastro de barberia</Text>
             <AreaInput>
@@ -97,7 +97,7 @@ export default function CadastrarMinhaBarbearia() {
             <BtnText>Cadastrar minha barbearia</BtnText>
           </Btn>
 
-   </Background>
+    </Container>
    </TouchableWithoutFeedback>
   );
 }

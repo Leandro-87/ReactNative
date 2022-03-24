@@ -10,7 +10,7 @@ export default function BarbeariasFrequento({data}) {
  return (
    
        <LogoBarbeariaFrequento
-       style={{resizeMode: "contain", width:200, height:120, marginVertical:10}}
+       style={{resizeMode: "contain", marginVertical:10}}
        source={data.logoBarbearia}
        onPress={() => navigation.navigate('Perfil')} />
   

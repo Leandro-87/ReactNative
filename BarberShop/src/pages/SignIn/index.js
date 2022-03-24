@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../contexts/auth';
 
-import {Background, Container, Logo, AreaInput, Input, Btn, BtnText, Link, LinkText} from '../../assets/styles'
+import {Container, Logo, AreaInput, Input, Btn, BtnText, Link, LinkText} from '../../assets/styles'
 
 export default function SignIn() {
 
@@ -18,7 +18,7 @@ export default function SignIn() {
   }
 
   return (
-    <Background>
+    
         <Container
         behavior={Platform.OS === 'ios' ? 'padding' : ''}>
 
@@ -58,6 +58,6 @@ export default function SignIn() {
           </Link>
 
         </Container>
-    </Background>
+    
   );
 }

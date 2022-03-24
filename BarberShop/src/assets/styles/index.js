@@ -1,11 +1,8 @@
 // GLOBAL
 import styled from 'styled-components/native'
 
-export const Background = styled.View`
-flex: 1; margin: 0 20px; `;
-
-export const Container = styled.KeyboardAvoidingView`
-flex:1;`;
+export const Container = styled.SafeAreaView`
+flex:1; padding: 0 20px; background-color:#dfdfdf;`;
 
 export const Logo = styled.Image`
 width:91%; height:100px; align-self:center; margin:30px 0 ;`;
@@ -30,3 +27,6 @@ export const LinkText = styled.Text`
 
 export const BarbsFrequento = styled.FlatList`
  padding:0 20px; margin:20px 0; align-self:center;`;
+
+export const LogoBarbeariaFrequento = styled.Image`
+`;
