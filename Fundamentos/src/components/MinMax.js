@@ -4,7 +4,7 @@ import Style from './style'
 
 export default (props) => {
     return (
-        <Text style={Style.h1}>
+        <Text style={Style.h3}>
             O valor {props.max} é maior que {props.min}
         </Text>
     )
